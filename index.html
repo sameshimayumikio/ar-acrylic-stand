@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>AR Acrylic Stand</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:," />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+        "mindar-image-three": "https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="start-overlay">
+    <button id="start-button">タップしてスタート</button>
+  </div>
+  <div id="ar-container"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
