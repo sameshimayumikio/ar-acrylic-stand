@@ -36,3 +36,13 @@ html, body {
 #start-overlay.hidden {
   display: none;
 }
+
+#video-tap-area {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: none;
+}
+#video-tap-area.active {
+  display: block;
+}
