@@ -77,11 +77,30 @@ async function startAR() {
   anchor.group.add(plane);
 
   anchor.onTargetFound = () => {
-    video.play().catch((err) => console.warn('video play failed:', err));
+    // 静止画（先頭フレーム）を表示するため、一瞬再生して即停止する
+    video.currentTime = 0;
+    video.play()
+      .then(() => {
+        video.pause();
+      })
+      .catch((err) => console.warn('preview frame failed:', err));
+    tapArea.classList.add('active');
   };
   anchor.onTargetLost = () => {
     video.pause();
+    tapArea.classList.remove('active');
   };
+
+  tapArea.addEventListener('click', () => {
+    if (video.paused) {
+      video.play().catch((err) => console.warn('video play failed:', err));
+    }
+  });
+
+  video.addEventListener('ended', () => {
+    video.currentTime = 0;
+    video.pause();
+  });
 
   await mindarThree.start();
   renderer.setAnimationLoop(() => {
