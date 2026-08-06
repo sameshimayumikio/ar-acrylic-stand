@@ -27,8 +27,6 @@ async function startAR() {
   const { renderer, scene, camera } = mindarThree;
   renderer.setClearAlpha(0);
   const anchor = mindarThree.addAnchor(0);
-
-  const anchor = mindarThree.addAnchor(0);
   const tapArea = document.getElementById('video-tap-area');
   
   const video = document.createElement('video');
