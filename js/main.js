@@ -28,6 +28,9 @@ async function startAR() {
   renderer.setClearAlpha(0);
   const anchor = mindarThree.addAnchor(0);
 
+  const anchor = mindarThree.addAnchor(0);
+  const tapArea = document.getElementById('video-tap-area');
+  
   const video = document.createElement('video');
   video.src = 'assets/videos/dance.mp4';
   video.playsInline = true;
