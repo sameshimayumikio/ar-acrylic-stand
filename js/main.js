@@ -27,8 +27,9 @@ async function startAR() {
   const { renderer, scene, camera } = mindarThree;
   renderer.setClearAlpha(0);
   const anchor = mindarThree.addAnchor(0);
-  const tapArea = document.getElementById('video-tap-area');
-  
+const tapArea = document.getElementById('video-tap-area');
+  const playIcon = document.getElementById('play-icon');
+
   const video = document.createElement('video');
   video.src = 'assets/videos/dance.mp4';
   video.playsInline = true;
@@ -74,7 +75,7 @@ async function startAR() {
   const plane = new THREE.Mesh(geometry, material);
   anchor.group.add(plane);
 
-  anchor.onTargetFound = () => {
+anchor.onTargetFound = () => {
     // 静止画（先頭フレーム）を表示するため、一瞬再生して即停止する
     video.currentTime = 0;
     video.play()
@@ -83,21 +84,23 @@ async function startAR() {
       })
       .catch((err) => console.warn('preview frame failed:', err));
     tapArea.classList.add('active');
+    playIcon.classList.add('visible');
   };
   anchor.onTargetLost = () => {
     video.pause();
     tapArea.classList.remove('active');
+    playIcon.classList.remove('visible');
   };
-
   tapArea.addEventListener('click', () => {
     if (video.paused) {
       video.play().catch((err) => console.warn('video play failed:', err));
+      playIcon.classList.remove('visible');
     }
   });
-
   video.addEventListener('ended', () => {
     video.currentTime = 0;
     video.pause();
+    playIcon.classList.add('visible');
   });
 
   await mindarThree.start();
