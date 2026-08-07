@@ -46,3 +46,19 @@ html, body {
 #video-tap-area.active {
   display: block;
 }
+
+#play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+#play-icon.visible {
+  opacity: 1;
+}
