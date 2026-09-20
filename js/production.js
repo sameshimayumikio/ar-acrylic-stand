@@ -17,7 +17,7 @@ startButton.addEventListener('click', async () => {
 async function startAR() {
   const mindarThree = new MindARThree({
     container: document.querySelector('#ar-container'),
-    imageTargetSrc: 'https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind',
+    imageTargetSrc: '../assets/01/simple-test.mind',
     warmupTolerance: 1,
     missTolerance: 60,
     filterMinCF: 0.00001,
