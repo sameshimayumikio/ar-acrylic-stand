@@ -73,7 +73,7 @@ async function startAR() {
   // 05番のRGB側 447×644px に合わせる（644 / 447 ≒ 1.4407）
   const geometry = new THREE.PlaneGeometry(1, 1.4407);
   const plane = new THREE.Mesh(geometry, material);
-  plane.scale.set(1.2, 1.2, 1);
+  plane.scale.set(1.4, 1.4, 1);
   anchor.group.add(plane);
 
   anchor.onTargetFound = () => {
