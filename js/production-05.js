@@ -17,7 +17,7 @@ startButton.addEventListener('click', async () => {
 async function startAR() {
   const mindarThree = new MindARThree({
     container: document.querySelector('#ar-container'),
-    imageTargetSrc: '../assets/05/targets.mind',
+    imageTargetSrc: '../assets/05/05_target_800.mind',
     warmupTolerance: 1,
     missTolerance: 60,
     filterMinCF: 0.00001,
