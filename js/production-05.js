@@ -62,7 +62,7 @@ async function startAR() {
         vec2 colorUv = vec2(vUv.x * 0.5, vUv.y);
         vec2 alphaUv = vec2(vUv.x * 0.5 + 0.5, vUv.y);
         vec3 color = texture2D(map, colorUv).rgb;
-        color *= 1.12;
+        color *= 1.2;
 
         float alpha = texture2D(map, alphaUv).r;
         if (alpha < alphaThreshold) discard;
