@@ -19,7 +19,7 @@ async function startAR() {
     container: document.querySelector('#ar-container'),
     imageTargetSrc: '../assets/05/05_target_800.mind',
     warmupTolerance: 1,
-    missTolerance: 60,
+    missTolerance: 20,
     filterMinCF: 0.00001,
     filterBeta: 0.001,
   });
@@ -73,7 +73,8 @@ async function startAR() {
   // 05番のRGB側 447×644px に合わせる（644 / 447 ≒ 1.4407）
   const geometry = new THREE.PlaneGeometry(1, 1.4407);
   const plane = new THREE.Mesh(geometry, material);
-  anchor.group.add(plane);
+plane.scale.set(1.2, 1.2, 1);
+anchor.group.add(plane);
 
   anchor.onTargetFound = () => {
     video.currentTime = 0;
