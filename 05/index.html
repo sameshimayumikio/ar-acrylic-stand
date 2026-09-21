@@ -33,6 +33,16 @@
     </svg>
   </div>
 
-  <script type="module" src="../js/production-05.js"></script>
+  <script>
+    window.AR_CONFIG = {
+      imageTargetSrc: '../assets/05/05_target_800.mind',
+      videoSrc: '../assets/05/05_dance.mp4',
+      planeAspect: 1.4407,
+      planeScale: 1.4,
+      brightness: 1.2,
+      missTolerance: 20
+    };
+  </script>
+  <script type="module" src="../js/ar.js"></script>
 </body>
 </html>
