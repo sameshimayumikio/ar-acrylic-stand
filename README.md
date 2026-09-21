@@ -10,7 +10,7 @@
 ## 現在の状態
 
 **05番のARが完成済み**です。  
-01〜04・06〜10番については、05と同じ共通JSを使用するページ構造とアセット格納先まで作成済みです。各番号の `.mind` とMP4を配置し、個別調整値を確認すれば実装を進められます。
+01〜04・06〜10番に加え、ペア3種と全員集合1種についても、05と同じ共通JSを使用するページ構造とアセット格納先まで作成済みです。各パターンの `.mind` とMP4を配置し、個別調整値を確認すれば実装を進められます。
 
 完成済み05の公開URL:
 
@@ -99,7 +99,7 @@ window.AR_CONFIG = {
 
 ## 現在のディレクトリ構成
 
-単体10種について、ページとアセット用フォルダを準備済みです。
+14パターンすべてについて、ページとアセット用フォルダを準備済みです。
 
 ```
 ar-acrylic-stand/
@@ -123,29 +123,20 @@ ar-acrylic-stand/
 │   └── index.html
 ├── 10/
 │   └── index.html
+├── pair-02-03/
+│   └── index.html
+├── pair-04-05/
+│   └── index.html
+├── pair-07-10/
+│   └── index.html
+├── all/
+│   └── index.html
 ├── assets/
-│   ├── 01/
-│   │   └── README.md
-│   ├── 02/
-│   │   └── README.md
-│   ├── 03/
-│   │   └── README.md
-│   ├── 04/
-│   │   └── README.md
-│   ├── 05/
-│   │   ├── 05_target_800.mind
-│   │   ├── 05_dance.mp4
-│   │   └── README.md
-│   ├── 06/
-│   │   └── README.md
-│   ├── 07/
-│   │   └── README.md
-│   ├── 08/
-│   │   └── README.md
-│   ├── 09/
-│   │   └── README.md
-│   └── 10/
-│       └── README.md
+│   ├── 01/ ... 10/
+│   ├── pair-02-03/
+│   ├── pair-04-05/
+│   ├── pair-07-10/
+│   └── all/
 ├── css/
 │   └── style.css
 ├── js/
@@ -153,16 +144,36 @@ ar-acrylic-stand/
 └── README.md
 ```
 
-01〜04・06〜10番の各ページは、対応する以下のファイルを参照する構造です。
+単体10種は、
 
 ```
 assets/XX/XX_target_800.mind
 assets/XX/XX_dance.mp4
 ```
 
-05以外の固有調整値（`planeAspect` / `planeScale` / `brightness` / `missTolerance` など）はまだ固定せず、各ARの実機確認後に追加します。
+ペア3種は、
 
-ペア3種と集合1種は、単体10種の調整後に同じ考え方で追加します。
+```
+assets/pair-02-03/pair-02-03_target_800.mind
+assets/pair-02-03/pair-02-03_dance.mp4
+
+assets/pair-04-05/pair-04-05_target_800.mind
+assets/pair-04-05/pair-04-05_dance.mp4
+
+assets/pair-07-10/pair-07-10_target_800.mind
+assets/pair-07-10/pair-07-10_dance.mp4
+```
+
+全員集合は、
+
+```
+assets/all/all_target_800.mind
+assets/all/all_dance.mp4
+```
+
+を参照する構造です。
+
+05以外の固有調整値（`planeAspect` / `planeScale` / `brightness` / `missTolerance` など）はまだ固定せず、各ARの実機確認後に追加します。
 
 ---
 
