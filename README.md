@@ -9,9 +9,10 @@
 
 ## 現在の状態
 
-現在、**05番のARが完成済み**です。
+**05番のARが完成済み**です。  
+01〜04・06〜10番については、05と同じ共通JSを使用するページ構造とアセット格納先まで作成済みです。各番号の `.mind` とMP4を配置し、個別調整値を確認すれば実装を進められます。
 
-公開URL:
+完成済み05の公開URL:
 
 ```
 https://sameshimayumikio.github.io/ar-acrylic-stand/05/
@@ -98,14 +99,52 @@ window.AR_CONFIG = {
 
 ## 現在のディレクトリ構成
 
+単体10種について、ページとアセット用フォルダを準備済みです。
+
 ```
 ar-acrylic-stand/
+├── 01/
+│   └── index.html
+├── 02/
+│   └── index.html
+├── 03/
+│   └── index.html
+├── 04/
+│   └── index.html
 ├── 05/
 │   └── index.html
+├── 06/
+│   └── index.html
+├── 07/
+│   └── index.html
+├── 08/
+│   └── index.html
+├── 09/
+│   └── index.html
+├── 10/
+│   └── index.html
 ├── assets/
-│   └── 05/
-│       ├── 05_target_800.mind
-│       ├── 05_dance.mp4
+│   ├── 01/
+│   │   └── README.md
+│   ├── 02/
+│   │   └── README.md
+│   ├── 03/
+│   │   └── README.md
+│   ├── 04/
+│   │   └── README.md
+│   ├── 05/
+│   │   ├── 05_target_800.mind
+│   │   ├── 05_dance.mp4
+│   │   └── README.md
+│   ├── 06/
+│   │   └── README.md
+│   ├── 07/
+│   │   └── README.md
+│   ├── 08/
+│   │   └── README.md
+│   ├── 09/
+│   │   └── README.md
+│   └── 10/
 │       └── README.md
 ├── css/
 │   └── style.css
@@ -114,7 +153,16 @@ ar-acrylic-stand/
 └── README.md
 ```
 
-今後、01〜10・ペア3種・集合1種を同じ構造で追加します。
+01〜04・06〜10番の各ページは、対応する以下のファイルを参照する構造です。
+
+```
+assets/XX/XX_target_800.mind
+assets/XX/XX_dance.mp4
+```
+
+05以外の固有調整値（`planeAspect` / `planeScale` / `brightness` / `missTolerance` など）はまだ固定せず、各ARの実機確認後に追加します。
+
+ペア3種と集合1種は、単体10種の調整後に同じ考え方で追加します。
 
 ---
 
