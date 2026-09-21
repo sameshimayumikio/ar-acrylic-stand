@@ -31,7 +31,7 @@ async function startAR() {
   const playIcon = document.getElementById('play-icon');
 
   const video = document.createElement('video');
-  video.src = '../assets/05/dance.mp4';
+  video.src = '../assets/05/05_dance.mp4';
   video.playsInline = true;
   video.crossOrigin = 'anonymous';
   video.setAttribute('webkit-playsinline', '');
