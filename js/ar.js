@@ -9,7 +9,7 @@ const config = {
   brightness: 1,
   alphaThreshold: 0.5,
   warmupTolerance: 1,
-  missTolerance: 60,
+  missTolerance: 20,
   filterMinCF: 0.00001,
   filterBeta: 0.001,
   ...(window.AR_CONFIG || {}),
