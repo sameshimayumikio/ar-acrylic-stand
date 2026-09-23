@@ -88,8 +88,7 @@ window.AR_CONFIG = {
   videoSrc: '../assets/05/05_dance.mp4',
   planeAspect: 1.4407,
   planeScale: 1.4,
-  brightness: 1.2,
-  missTolerance: 20
+  brightness: 1.2
 };
 ```
 
@@ -173,7 +172,9 @@ assets/all/all_dance.mp4
 
 を参照する構造です。
 
-05以外の固有調整値（`planeAspect` / `planeScale` / `brightness` / `missTolerance` など）はまだ固定せず、各ARの実機確認後に追加します。
+05以外の固有調整値（`planeAspect` / `planeScale` / `brightness` など）はまだ固定せず、各ARの実機確認後に追加します。
+
+`missTolerance` は個別設定ではなく、共通 `js/ar.js` 側で **20** に固定し、14パターンすべてで統一します。
 
 ---
 
@@ -249,7 +250,6 @@ video         assets/05/05_dance.mp4
 planeAspect   1.4407
 planeScale    1.4
 brightness    1.2
-missTolerance 20
 alphaThreshold 0.5
 ```
 
