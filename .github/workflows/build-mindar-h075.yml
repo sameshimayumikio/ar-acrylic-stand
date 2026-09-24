@@ -45,16 +45,17 @@ jobs:
           npm ci --ignore-scripts
           npm run build
 
-      - name: Copy custom bundle
+      - name: Copy custom bundle and runtime chunks
         run: |
-          mkdir -p vendor
-          cp mindar-src/dist/mindar-image-three.prod.js vendor/mindar-image-three-h075.prod.js
+          rm -rf vendor/h075
+          mkdir -p vendor/h075
+          cp mindar-src/dist/*.js vendor/h075/
 
       - name: Commit custom test bundle
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add vendor/mindar-image-three-h075.prod.js
+          git add vendor/h075/
           if git diff --cached --quiet; then
             echo "No bundle changes"
             exit 0
