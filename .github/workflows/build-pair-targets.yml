@@ -1,0 +1,64 @@
+name: Build pair multi-target mind files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-pair-targets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Combine existing single-target mind files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          PREFIX = b'\x82\xa1v\x02\xa8dataList'
+
+          def combine(a, b, out):
+              da = Path(a).read_bytes()
+              db = Path(b).read_bytes()
+
+              for path, data in [(a, da), (b, db)]:
+                  if not data.startswith(PREFIX):
+                      raise SystemExit(f'Unexpected .mind header: {path}')
+                  if len(data) < 15 or data[len(PREFIX)] != 0x91:
+                      raise SystemExit(f'Expected single-target dataList in: {path}')
+
+              merged = PREFIX + b'\x92' + da[len(PREFIX)+1:] + db[len(PREFIX)+1:]
+              Path(out).write_bytes(merged)
+              print(f'{out}: {len(merged)} bytes')
+
+          combine(
+              'assets/04/04_target_800.mind',
+              'assets/05/05_target_800.mind',
+              'assets/pair-04-05/pair-04-05_targets.mind'
+          )
+
+          combine(
+              'assets/07/07_target_800.mind',
+              'assets/10/10_target_800.mind',
+              'assets/pair-07-10/pair-07-10_targets.mind'
+          )
+          PY
+
+      - name: Commit generated pair target files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/pair-04-05/pair-04-05_targets.mind
+          git add assets/pair-07-10/pair-07-10_targets.mind
+          if git diff --cached --quiet; then
+            echo "No target changes"
+            exit 0
+          fi
+          git commit -m "Build two-target mind files for remaining pairs"
+          git push
