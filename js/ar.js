@@ -8,7 +8,7 @@ const config = {
   planeScale: 1,
   brightness: 1,
   alphaThreshold: 0.5,
-  warmupTolerance: 1,
+  warmupTolerance: 0,
   missTolerance: 30,
   filterMinCF: 0.00001,
   filterBeta: 0.001,
