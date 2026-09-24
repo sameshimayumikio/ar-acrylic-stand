@@ -42,7 +42,7 @@ jobs:
       - name: Install and build MindAR
         working-directory: mindar-src
         run: |
-          npm ci
+          npm ci --ignore-scripts
           npm run build
 
       - name: Copy custom bundle
