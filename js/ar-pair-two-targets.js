@@ -176,12 +176,11 @@ async function startAR() {
     if (pairActive) playIcon.classList.add('visible');
   });
 
+  // Both targets are required to activate the pair AR,
+  // but target A alone is the spatial reference for position/orientation/scale.
   const posA = new THREE.Vector3();
-  const posB = new THREE.Vector3();
   const scaleA = new THREE.Vector3();
-  const scaleB = new THREE.Vector3();
   const quatA = new THREE.Quaternion();
-  const quatB = new THREE.Quaternion();
 
   await mindarThree.start();
 
@@ -190,17 +189,14 @@ async function startAR() {
       scene.updateMatrixWorld(true);
 
       anchorA.group.getWorldPosition(posA);
-      anchorB.group.getWorldPosition(posB);
       anchorA.group.getWorldScale(scaleA);
-      anchorB.group.getWorldScale(scaleB);
       anchorA.group.getWorldQuaternion(quatA);
-      anchorB.group.getWorldQuaternion(quatB);
 
-      pairRoot.position.copy(posA).lerp(posB, 0.5);
-      pairRoot.quaternion.copy(quatA).slerp(quatB, 0.5);
+      pairRoot.position.copy(posA);
+      pairRoot.quaternion.copy(quatA);
 
-      const avgScale = (scaleA.x + scaleB.x) * 0.5 * config.planeScale;
-      pairRoot.scale.set(avgScale, avgScale, avgScale);
+      const baseScale = scaleA.x * config.planeScale;
+      pairRoot.scale.set(baseScale, baseScale, baseScale);
     }
 
     renderer.render(scene, camera);
